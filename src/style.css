@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-gray-300 hover:text-taxi-yellow transition-colors duration-200 font-medium;
+  }
+
+  .btn-primary {
+    @apply bg-taxi-yellow text-taxi-dark font-bold px-8 py-3 rounded-full
+           hover:bg-yellow-400 active:scale-95 transition-all duration-200 inline-block;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-taxi-dark mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-gray-500 text-lg mb-12 max-w-xl mx-auto;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300;
+  }
+
+  /* Gallery hover overlay */
+  .gallery-item {
+    @apply relative overflow-hidden rounded-2xl cursor-pointer;
+  }
+
+  .gallery-item img {
+    @apply w-full h-56 object-cover transition-transform duration-500;
+  }
+
+  .gallery-item:hover img {
+    @apply scale-110;
+  }
+
+  .gallery-overlay {
+    @apply absolute inset-0 bg-taxi-dark/40 opacity-0 transition-opacity duration-300
+           flex items-center justify-center;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    @apply opacity-100;
+  }
+}
