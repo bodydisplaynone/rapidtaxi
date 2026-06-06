@@ -1,310 +1,458 @@
 <!doctype html>
 <html lang="hu">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RapidTaxi Győr</title>
-    <meta name="description" content="Gyors, megbízható taxiszolgáltatás Győrben és vonzáskörzetében. Hívjon minket bármikor!" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <script type="module" src="/src/main.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RapidTaxi Győr – Gyors, megbízható taxiszolgáltatás</title>
+  <meta name="description" content="Megbízható taxiszolgáltatás Győrben és vonzáskörzetében. Reptéri transzfer, városi fuvar, távolsági út. Hívjon minket éjjel-nappal!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:ital,wght@0,500;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet" />
+  <script type="module" src="/src/main.js"></script>
+</head>
 
-  <body class="font-sans bg-white text-taxi-dark antialiased">
+<body>
 
-    <!-- ───────────── NAVBAR ───────────── -->
-    <header id="navbar" class="fixed top-0 inset-x-0 z-50 bg-taxi-dark/95 backdrop-blur-sm transition-all duration-300">
-      <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+  <!-- ══════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════ -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 bg-brand-navy/95 backdrop-blur-sm">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
-        <!-- Logo -->
-        <a href="#hero" class="flex items-center gap-2 group">
-          <span class="text-taxi-yellow text-2xl font-black tracking-tight group-hover:opacity-90 transition-opacity">
-            Rapid<span class="text-white">Taxi</span>
-          </span>
-          <span class="text-gray-400 text-sm font-medium hidden sm:inline">Győr</span>
-        </a>
+      <a href="#hero" class="font-heading font-black text-xl italic tracking-tight">
+        <span class="text-white">Rapid</span><span class="text-brand-yellow">Taxi</span>
+      </a>
 
-        <!-- Desktop nav -->
-        <nav class="hidden md:flex items-center gap-8">
-          <a href="#szolgaltatasok" class="nav-link">Szolgáltatások</a>
-          <a href="#soforeink" class="nav-link">Sofőreink</a>
-          <a href="#flottank" class="nav-link">Flottánk</a>
-          <a href="#terulet" class="nav-link">Terület</a>
-          <a href="tel:+36301234567" class="btn-primary text-sm py-2 px-5">
-            📞 Hívjon most!
-          </a>
-        </nav>
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#szolgaltatasok" class="nav-link">Szolgáltatások</a>
+        <a href="#soforeink"      class="nav-link">Sofőreink</a>
+        <a href="#flottank"       class="nav-link">Flottánk</a>
+        <a href="#arak"           class="nav-link">Árak</a>
+        <a href="#terulet"        class="nav-link">Terület</a>
+        <a href="tel:+36301234567" class="btn-primary py-2 px-5 text-sm">📞 Hívjon most!</a>
+      </nav>
 
-        <!-- Mobile: phone button only -->
-        <a href="tel:+36301234567" class="md:hidden btn-primary text-sm py-2 px-4">
-          📞 Hívás
-        </a>
-      </div>
-    </header>
+      <!-- Mobile: hamburger -->
+      <button id="burger" class="md:hidden flex flex-col gap-1.5 p-2 group" aria-label="Menü">
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+      </button>
+    </div>
 
-    <!-- ───────────── HERO ───────────── -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <!-- Background image -->
+    <!-- Mobile dropdown menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-brand-navy border-t border-white/10 px-6 py-4 flex flex-col gap-4">
+      <a href="#szolgaltatasok" class="nav-link text-base py-2">Szolgáltatások</a>
+      <a href="#soforeink"      class="nav-link text-base py-2">Sofőreink</a>
+      <a href="#flottank"       class="nav-link text-base py-2">Flottánk</a>
+      <a href="#arak"           class="nav-link text-base py-2">Árak</a>
+      <a href="#terulet"        class="nav-link text-base py-2">Terület</a>
+      <a href="tel:+36301234567" class="btn-primary text-center text-base py-3 mt-2">📞 Hívjon most!</a>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       FLOATING CALL BUTTON (mobile only)
+  ══════════════════════════════════════════ -->
+  <a href="tel:+36301234567"
+     class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50
+            bg-brand-yellow text-brand-navy font-heading font-black text-lg
+            px-10 py-4 rounded-full shadow-2xl
+            flex items-center gap-3
+            active:scale-95 transition-transform duration-150"
+     aria-label="Hívjon most">
+    <span class="text-2xl">📞</span>
+    <span>Hívjon most!</span>
+  </a>
+
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-brand-navy">
+
+    <img
+      src="assets/skoda.jpg"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover opacity-10 scale-105"
+      aria-hidden="true"
+    />
+
+    <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
       <img
-        src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&auto=format&fit=crop&q=80"
-        alt="Taxi a városban"
-        class="absolute inset-0 w-full h-full object-cover"
+        src="assets/g2.png"
+        alt="RapidTaxi Győr logó"
+        class="mx-auto mb-8 w-48 md:w-64 drop-shadow-2xl"
+        style="filter: brightness(0) invert(1);"
       />
-      <!-- Dark overlay -->
-      <div class="absolute inset-0 bg-gradient-to-b from-taxi-dark/70 via-taxi-dark/50 to-taxi-dark/80"></div>
+      <h1 class="text-4xl md:text-6xl font-heading font-black text-white leading-tight mb-5">
+        Gyors. Megbízható.<br/>
+        <span class="text-brand-yellow">Mindig időben.</span>
+      </h1>
+      <p class="text-gray-300 text-lg md:text-xl mb-10 font-light">
+        Taxiszolgáltatás Győrből — városi fuvartól reptéri transzferig.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:+36301234567" class="btn-primary text-base py-4 px-10">
+          📞 Hívjon most!
+        </a>
+        <a href="#arak" class="btn-outline text-base py-4 px-10">
+          Árak megtekintése
+        </a>
+      </div>
+    </div>
 
-      <!-- Content -->
-      <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
-        <p class="text-taxi-yellow font-semibold tracking-widest uppercase text-sm mb-4">Győr megbízható taxija</p>
-        <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-6">
-          Rapid<span class="text-taxi-yellow">Taxi</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-200 mb-10 font-light">
-          Gyors, megbízható, mindig időben.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:+36301234567" class="btn-primary text-lg py-4 px-10">
-            📞 Hívjon most!
-          </a>
-          <a href="#szolgaltatasok" class="border-2 border-white/50 text-white font-semibold px-10 py-4 rounded-full hover:border-taxi-yellow hover:text-taxi-yellow transition-all duration-200">
-            Szolgáltatásaink
-          </a>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+      <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SERVICES
+  ══════════════════════════════════════════ -->
+  <section id="szolgaltatasok" class="py-24 bg-brand-light">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <p class="section-label">Mit kínálunk?</p>
+        <h2 class="section-title-light">Szolgáltatásaink</h2>
+        <p class="section-sub-light">Legyen szó rövid városon belüli útról vagy hosszú utazásról — mi ott leszünk.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div class="card-light text-center group">
+          <div class="w-14 h-14 bg-brand-yellow/15 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-yellow/25 transition-colors duration-300">
+            <span class="text-3xl">✈️</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-2">Reptéri transzfer</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Pontos felszállítás és fogadás Budapest (BUD) és Bécs (VIE) repülőterein.</p>
+        </div>
+
+        <div class="card-light text-center group">
+          <div class="w-14 h-14 bg-brand-yellow/15 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-yellow/25 transition-colors duration-300">
+            <span class="text-3xl">🏙️</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-2">Városi fuvar</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Gyors és megbízható fuvar Győr bármely pontjára, éjjel-nappal.</p>
+        </div>
+
+        <div class="card-light text-center group">
+          <div class="w-14 h-14 bg-brand-yellow/15 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-yellow/25 transition-colors duration-300">
+            <span class="text-3xl">💼</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-2">Vállalati fuvarozás</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Szerződéses árak, diszkrét kiszolgálás üzleti ügyfeleknek.</p>
+        </div>
+
+        <div class="card-light text-center group">
+          <div class="w-14 h-14 bg-brand-yellow/15 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-yellow/25 transition-colors duration-300">
+            <span class="text-3xl">🛣️</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-2">Távolsági út</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Eljuttatjuk Önt Magyarország bármely pontjára, kedvező áron.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       DRIVERS
+  ══════════════════════════════════════════ -->
+  <section id="soforeink" class="py-24 bg-brand-navy">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <p class="section-label">A csapatunk</p>
+        <h2 class="section-title-dark">Sofőreink</h2>
+        <p class="section-sub-dark">Két sofőr. Egy cél. Minden fuvar személyes figyelemmel.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+
+        <div class="card-dark flex flex-col items-center text-center">
+          <img
+            src="assets/bence-driver.jpg"
+            alt="Bence"
+            class="w-28 h-28 rounded-full object-cover object-top mb-5 ring-4 ring-brand-yellow/30"
+            onerror="this.src='https://ui-avatars.com/api/?name=Bence&background=2D3E6B&color=F5B800&size=112&bold=true'"
+          />
+          <h3 class="font-heading font-bold text-xl text-white mb-1">Bence</h3>
+          <p class="text-brand-yellow text-xs font-semibold tracking-widest uppercase mb-4">Sofőr</p>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Győr és vonzáskörzete tenyerén ismeri. Gyors, pontos, mindig mosolygós. Különös gondot fordít az utasok kényelmére.
+          </p>
+        </div>
+
+        <div class="card-dark flex flex-col items-center text-center">
+          <img
+            src="assets/jozsi-driver.jpg"
+            alt="Józsi"
+            class="w-28 h-28 rounded-full object-cover object-top mb-5 ring-4 ring-brand-yellow/30"
+            onerror="this.src='https://ui-avatars.com/api/?name=Jozsi&background=2D3E6B&color=F5B800&size=112&bold=true'"
+          />
+          <h3 class="font-heading font-bold text-xl text-white mb-1">Józsi</h3>
+          <p class="text-brand-yellow text-xs font-semibold tracking-widest uppercase mb-4">Sofőr</p>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Tapasztalt, nyugodt vezető, akire mindig lehet számítani. Hosszú úton éppúgy megbízható, mint egy gyors városi fuvarnál.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FLEET
+  ══════════════════════════════════════════ -->
+  <section id="flottank" class="py-24 bg-brand-light">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <p class="section-label">Járműveink</p>
+        <h2 class="section-title-light">Flottánk</h2>
+        <p class="section-sub-light">Két azonos típusú, gondosan karbantartott autóval állunk rendelkezésére.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+
+        <div class="gallery-item rounded-3xl shadow-xl overflow-hidden">
+          <img
+            src="assets/skoda.jpg"
+            alt="Škoda Octavia – RapidTaxi"
+            class="w-full h-72 object-cover rounded-3xl"
+          />
+          <div class="gallery-overlay rounded-3xl">
+            <span class="text-white font-heading font-bold text-lg">Škoda Octavia</span>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-brand-yellow/15 rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="text-2xl">🚗</span>
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg mb-1">2 × Škoda Octavia</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">Két azonos modell, tökéletes megbízhatóság. Tágas utastér, mindig tisztán és frissen.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-brand-yellow/15 rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="text-2xl">🧹</span>
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg mb-1">Tisztaság garantálva</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">Minden fuvar előtt átvizsgálva és kitakarítva. Az egészségügyi takarítás díja 50 000 Ft.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-brand-yellow/15 rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="text-2xl">🛡️</span>
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg mb-1">Rendszeres karbantartás</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">Folyamatos műszaki ellenőrzés, hogy Ön mindig biztonságban utazzon.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       PRICING
+  ══════════════════════════════════════════ -->
+  <section id="arak" class="py-24 bg-brand-navy">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <p class="section-label">Tarifák</p>
+        <h2 class="section-title-dark">Áraink</h2>
+        <p class="section-sub-dark">Átlátható, fix árak — meglepetések nélkül. Az árak forintban értendők.</p>
+      </div>
+
+      <!-- Tariff table -->
+      <div class="overflow-x-auto mb-16">
+        <table class="price-table w-full min-w-[540px] bg-white/5 rounded-2xl overflow-hidden">
+          <thead>
+            <tr class="bg-white/5">
+              <th class="w-44">Megnevezés</th>
+              <th>Normál</th>
+              <th>Törzsutas</th>
+              <th>Szerződéses</th>
+              <th>Ünnepnap</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="row-label">Alapdíj</td>
+              <td>1 500 Ft</td>
+              <td>1 500 Ft</td>
+              <td>1 500 Ft</td>
+              <td>1 500 Ft</td>
+            </tr>
+            <tr class="bg-white/[0.03]">
+              <td class="row-label">KM díj</td>
+              <td>900 Ft/km</td>
+              <td>800 Ft/km</td>
+              <td>700 Ft/km</td>
+              <td>1 100 Ft/km</td>
+            </tr>
+            <tr>
+              <td class="row-label">Várakozás</td>
+              <td>200 Ft/perc</td>
+              <td>150 Ft/perc</td>
+              <td>150 Ft/perc</td>
+              <td>200 Ft/perc</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Real-life examples -->
+      <div class="text-center mb-10">
+        <p class="section-label">Valós példák</p>
+        <h3 class="text-2xl font-heading font-bold text-white mb-2">Mennyibe kerül az én utam?</h3>
+        <p class="text-gray-400 text-sm">Normál tarifa alapján, tájékoztató jelleggel.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+
+        <div class="card-dark flex items-center gap-4">
+          <span class="text-3xl flex-shrink-0">🏠</span>
+          <div>
+            <p class="text-white font-heading font-bold text-sm">Győr belváros</p>
+            <p class="text-gray-400 text-xs mb-1">Városon belüli fuvar</p>
+            <p class="text-brand-yellow font-heading font-black text-xl">~5 000 Ft</p>
+          </div>
+        </div>
+
+        <div class="card-dark flex items-center gap-4">
+          <span class="text-3xl flex-shrink-0">🏘️</span>
+          <div>
+            <p class="text-white font-heading font-bold text-sm">Abda / Győrszentiván / Csanak</p>
+            <p class="text-gray-400 text-xs mb-1">Közvetlen környék</p>
+            <p class="text-brand-yellow font-heading font-black text-xl">~10 000 Ft</p>
+          </div>
+        </div>
+
+        <div class="card-dark flex items-center gap-4">
+          <span class="text-3xl flex-shrink-0">🏭</span>
+          <div>
+            <p class="text-white font-heading font-bold text-sm">Mosonmagyaróvár</p>
+            <p class="text-gray-400 text-xs mb-1">~35 km</p>
+            <p class="text-brand-yellow font-heading font-black text-xl">~25 000 Ft</p>
+          </div>
+        </div>
+
+        <div class="card-dark flex items-center gap-4">
+          <span class="text-3xl flex-shrink-0">🌆</span>
+          <div>
+            <p class="text-white font-heading font-bold text-sm">Komárom / Pápa</p>
+            <p class="text-gray-400 text-xs mb-1">~40–50 km</p>
+            <p class="text-brand-yellow font-heading font-black text-xl">~30 000 Ft</p>
+          </div>
+        </div>
+
+        <div class="card-dark flex items-center gap-4">
+          <span class="text-3xl flex-shrink-0">✈️</span>
+          <div>
+            <p class="text-white font-heading font-bold text-sm">Budapest Liszt Ferenc</p>
+            <p class="text-gray-400 text-xs mb-1">Reptéri transzfer (~130 km)</p>
+            <p class="text-brand-yellow font-heading font-black text-xl">~70 000 Ft</p>
+          </div>
+        </div>
+
+        <div class="card-dark flex items-center gap-4">
+          <span class="text-3xl flex-shrink-0">🇦🇹</span>
+          <div>
+            <p class="text-white font-heading font-bold text-sm">Bécs (Schwechat)</p>
+            <p class="text-gray-400 text-xs mb-1">Reptéri transzfer (~160 km)</p>
+            <p class="text-brand-yellow font-heading font-black text-xl">~90 000 Ft</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-14 text-center">
+        <p class="text-gray-400 text-sm mb-5">Egyedi ajánlatért vagy előzetes foglalásért hívjon minket!</p>
+        <a href="tel:+36301234567" class="btn-primary text-base py-4 px-12">
+          📞 +36 30 123 4567
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       COVERAGE
+  ══════════════════════════════════════════ -->
+  <section id="terulet" class="py-24 bg-brand-light">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <p class="section-label">Hol találhat minket?</p>
+        <h2 class="section-title-light">Lefedett terület</h2>
+        <p class="section-sub-light">Győrből indulva, bárhová.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="card-light text-center">
+          <div class="text-4xl mb-4">🏙️</div>
+          <h3 class="font-heading font-bold text-lg mb-2">Győr és agglomeráció</h3>
+          <p class="text-gray-500 text-sm">Teljes lefedettség Győr városában és a közvetlen környező településeken.</p>
+        </div>
+        <div class="card-light text-center">
+          <div class="text-4xl mb-4">🗺️</div>
+          <h3 class="font-heading font-bold text-lg mb-2">Győr-Moson-Sopron megye</h3>
+          <p class="text-gray-500 text-sm">Mosonmagyaróvár, Sopron, Kapuvár és a megye összes városa elérhető.</p>
+        </div>
+        <div class="card-light text-center">
+          <div class="text-4xl mb-4">🛣️</div>
+          <h3 class="font-heading font-bold text-lg mb-2">Egész Magyarország + határ</h3>
+          <p class="text-gray-500 text-sm">Távolsági fuvar Magyarország bármely pontjára, valamint Bécsbe és Pozsonyba.</p>
         </div>
       </div>
 
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg class="w-6 h-6 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-        </svg>
+      <div class="mt-14 bg-brand-navy rounded-2xl p-8 md:p-10 text-center max-w-3xl mx-auto">
+        <p class="text-brand-yellow font-heading font-bold text-xs tracking-widest uppercase mb-2">Éjjel-nappal</p>
+        <h3 class="text-white font-heading font-black text-2xl mb-3">0–24 · Minden nap</h3>
+        <p class="text-gray-400 text-sm mb-6">Ünnepnapokon, hétvégén, éjjel — amikor szüksége van ránk, ott leszünk.</p>
+        <a href="tel:+36301234567" class="btn-primary py-3 px-10">📞 Hívjon most!</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ───────────── SERVICES ───────────── -->
-    <section id="szolgaltatasok" class="py-24 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <p class="text-taxi-yellow font-semibold uppercase tracking-widest text-sm mb-3">Mit kínálunk?</p>
-          <h2 class="section-title">Szolgáltatásaink</h2>
-          <p class="section-subtitle">Legyen szó helyi fuvarról vagy hosszabb útról, mi ott leszünk.</p>
-        </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-          <!-- Card 1 -->
-          <div class="card text-center group">
-            <div class="w-14 h-14 bg-taxi-yellow/15 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-taxi-yellow/30 transition-colors duration-300">
-              <span class="text-3xl">✈️</span>
-            </div>
-            <h3 class="font-bold text-lg mb-2">Reptéri transzfer</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">Kényelmes és pontos transzfer Budapest és Bécs repülőteréhez.</p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="card text-center group">
-            <div class="w-14 h-14 bg-taxi-yellow/15 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-taxi-yellow/30 transition-colors duration-300">
-              <span class="text-3xl">🏙️</span>
-            </div>
-            <h3 class="font-bold text-lg mb-2">Városi fuvar</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">Gyors és megfizethető fuvar Győr bármely pontjára, éjjel-nappal.</p>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="card text-center group">
-            <div class="w-14 h-14 bg-taxi-yellow/15 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-taxi-yellow/30 transition-colors duration-300">
-              <span class="text-3xl">💼</span>
-            </div>
-            <h3 class="font-bold text-lg mb-2">Vállalati fuvarozás</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">Diszkrét és professzionális kiszolgálás üzleti ügyfeleknek.</p>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="card text-center group">
-            <div class="w-14 h-14 bg-taxi-yellow/15 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-taxi-yellow/30 transition-colors duration-300">
-              <span class="text-3xl">🛣️</span>
-            </div>
-            <h3 class="font-bold text-lg mb-2">Távolsági út</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">Eljuttatjuk Önt Magyarország bármely városába kedvező áron.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────── DRIVERS ───────────── -->
-    <section id="soforeink" class="py-24 bg-white">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <p class="text-taxi-yellow font-semibold uppercase tracking-widest text-sm mb-3">A csapatunk</p>
-          <h2 class="section-title">Sofőreink</h2>
-          <p class="section-subtitle">Tapasztalt, udvarias sofőreink gondoskodnak az Ön biztonságos és kényelmes utazásáról.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-3xl mx-auto">
-
-          <!-- Driver 1 -->
-          <div class="card flex flex-col items-center text-center">
-            <img
-              src="src/assets/driver-1.jpg"
-              alt="Kovács László sofőr"
-              class="w-28 h-28 rounded-full object-cover mb-5 ring-4 ring-taxi-yellow/30"
-              onerror="this.src='https://ui-avatars.com/api/?name=Kovacs+Laszlo&background=F5C518&color=111827&size=112&bold=true'"
-            />
-            <h3 class="font-bold text-xl mb-1">Kovács László</h3>
-            <p class="text-taxi-yellow font-medium text-sm mb-3">Vezető sofőr</p>
-            <p class="text-gray-500 text-sm leading-relaxed">
-              Több mint 10 éve vezet Győrben és környékén. Minden útját pontossággal és kedvességgel végzi el. Angolul is kommunikál.
-            </p>
-          </div>
-
-          <!-- Driver 2 -->
-          <div class="card flex flex-col items-center text-center">
-            <img
-              src="src/assets/driver-2.jpg"
-              alt="Nagy Péter sofőr"
-              class="w-28 h-28 rounded-full object-cover mb-5 ring-4 ring-taxi-yellow/30"
-              onerror="this.src='https://ui-avatars.com/api/?name=Nagy+Peter&background=F5C518&color=111827&size=112&bold=true'"
-            />
-            <h3 class="font-bold text-xl mb-1">Nagy Péter</h3>
-            <p class="text-taxi-yellow font-medium text-sm mb-3">Sofőr</p>
-            <p class="text-gray-500 text-sm leading-relaxed">
-              Városismerete páratlan, mindig a legrövidebb útvonalat választja. Csendes, figyelmes vezető, aki ügyfelei kényelmét helyezi előtérbe.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────── GALLERY ───────────── -->
-    <section id="flottank" class="py-24 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <p class="text-taxi-yellow font-semibold uppercase tracking-widest text-sm mb-3">Járműveink</p>
-          <h2 class="section-title">Flottánk</h2>
-          <p class="section-subtitle">Két azonos típusú, gondosan karbantartott autóval állunk rendelkezésére.</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-          <div class="gallery-item sm:col-span-2 lg:col-span-1 lg:row-span-2">
-            <img
-              src="src/assets/car-1.jpg"
-              alt="RapidTaxi flotta 1"
-              class="w-full lg:h-full object-cover"
-              style="min-height: 14rem;"
-              onerror="this.src='https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&auto=format&fit=crop&q=80'"
-            />
-            <div class="gallery-overlay">
-              <span class="text-white font-semibold text-lg">RapidTaxi #1</span>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <img
-              src="src/assets/car-2.jpg"
-              alt="RapidTaxi flotta 2"
-              onerror="this.src='https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&auto=format&fit=crop&q=80'"
-            />
-            <div class="gallery-overlay">
-              <span class="text-white font-semibold text-lg">RapidTaxi #2</span>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <img
-              src="src/assets/car-3.jpg"
-              alt="RapidTaxi belső tér"
-              onerror="this.src='https://images.unsplash.com/photo-1566013656433-e818796d04f7?w=800&auto=format&fit=crop&q=80'"
-            />
-            <div class="gallery-overlay">
-              <span class="text-white font-semibold text-lg">Belső tér</span>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <img
-              src="src/assets/car-4.jpg"
-              alt="RapidTaxi részlet"
-              onerror="this.src='https://images.unsplash.com/photo-1621111848501-8d3634f82336?w=800&auto=format&fit=crop&q=80'"
-            />
-            <div class="gallery-overlay">
-              <span class="text-white font-semibold text-lg">RapidTaxi #1 — részlet</span>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <img
-              src="src/assets/car-5.jpg"
-              alt="RapidTaxi éjjel"
-              onerror="this.src='https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=800&auto=format&fit=crop&q=80'"
-            />
-            <div class="gallery-overlay">
-              <span class="text-white font-semibold text-lg">RapidTaxi #2 — részlet</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────── LOCATION ───────────── -->
-    <section id="terulet" class="py-24 bg-taxi-dark text-white">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <p class="text-taxi-yellow font-semibold uppercase tracking-widest text-sm mb-3">Hol találhat minket?</p>
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Terület</h2>
-          <p class="text-gray-400 text-lg max-w-xl mx-auto">Győr teljes területén és a vonzáskörzetben állunk rendelkezésére.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300">
-            <div class="text-4xl mb-4">🏠</div>
-            <h3 class="font-bold text-lg mb-2">Győr belváros</h3>
-            <p class="text-gray-400 text-sm">Teljes lefedettség a városközpontban és a kerületekben.</p>
-          </div>
-
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300">
-            <div class="text-4xl mb-4">🛣️</div>
-            <h3 class="font-bold text-lg mb-2">Vonzáskörzet</h3>
-            <p class="text-gray-400 text-sm">Győr-Moson-Sopron megye: Mosonmagyaróvár, Sopron, Pápa és környékük.</p>
-          </div>
-
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300">
-            <div class="text-4xl mb-4">✈️</div>
-            <h3 class="font-bold text-lg mb-2">Reptéri fuvar</h3>
-            <p class="text-gray-400 text-sm">Budapest Liszt Ferenc (BUD) és Bécs Schwechat (VIE) repülőterek.</p>
-          </div>
-
-        </div>
-
-        <!-- CTA strip -->
-        <div class="mt-16 text-center bg-taxi-yellow/10 border border-taxi-yellow/30 rounded-2xl p-10">
-          <p class="text-white text-xl font-medium mb-2">Kérdése van? Foglaljon most!</p>
-          <p class="text-gray-400 mb-6">Éjjel-nappal rendelkezésére állunk.</p>
-          <a href="tel:+36301234567" class="btn-primary text-lg py-4 px-12">
-            📞 +36 30 123 4567
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────── FOOTER ───────────── -->
-    <footer class="bg-black text-gray-400 py-10">
-      <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <span class="text-taxi-yellow font-black text-xl">Rapid<span class="text-white">Taxi</span> <span class="text-gray-400 font-medium text-base">Győr</span></span>
-        <div class="flex flex-col sm:flex-row items-center gap-4 text-sm">
-          <a href="tel:+36301234567" class="hover:text-taxi-yellow transition-colors">+36 30 123 4567</a>
-          <span class="hidden sm:inline text-gray-600">·</span>
-          <a href="mailto:info@rapidtaxi.hu" class="hover:text-taxi-yellow transition-colors">info@rapidtaxi.hu</a>
-          <span class="hidden sm:inline text-gray-600">·</span>
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer class="bg-black py-10 pb-28 md:pb-10">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <span class="font-heading font-black text-lg italic tracking-tight">
+          <span class="text-white/70">Rapid</span><span class="text-brand-yellow/70">Taxi</span>
+        </span>
+        <div class="flex flex-col sm:flex-row items-center gap-3 text-sm text-gray-400">
+          <a href="tel:+36301234567" class="hover:text-brand-yellow transition-colors">+36 30 123 4567</a>
+          <span class="hidden sm:inline text-gray-700">·</span>
+          <a href="mailto:info@rapidtaxigyor.hu" class="hover:text-brand-yellow transition-colors">info@rapidtaxigyor.hu</a>
+          <span class="hidden sm:inline text-gray-700">·</span>
           <span>Győr, Magyarország</span>
         </div>
-        <p class="text-xs text-gray-600">© 2026 RapidTaxi Győr. Minden jog fenntartva.</p>
+        <p class="text-xs text-gray-700">© 2026 RapidTaxi Győr</p>
       </div>
-    </footer>
+      <div class="mt-8 pt-6 border-t border-gray-900 text-xs text-gray-700 flex flex-col md:flex-row justify-between gap-4">
+        <span>Panasztételi szerv: Győr Polgármesteri Hivatal – Igazgatási Osztály · 9021 Győr, Honvéd liget 1.</span>
+        <span>Győr Kormányhivatal · Közlekedési, Műszaki Engedélyezési Főosztály · 9028 Győr, Tatai út 3.</span>
+      </div>
+    </div>
+  </footer>
 
-  </body>
+</body>
 </html>
