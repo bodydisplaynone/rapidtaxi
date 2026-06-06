@@ -30,13 +30,21 @@
 				background-image: linear-gradient(to top, rgba(20, 28, 50, 0.65), rgba(20, 28, 50, 0.65)), url("images/overlay.png");
 			}
 
-			/* Header logo: replace icon with car illustration */
+			/* Header logo: rectangle, sized for landscape car illustration */
 			#header .logo {
+				width: 12rem;
+				height: 5rem;
+				line-height: normal;
+				border-radius: 0.4rem;
 				border-color: var(--yellow);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0.4rem 0.8rem;
 			}
 			#header .logo img {
-				width: 4rem;
-				height: 4rem;
+				width: 100%;
+				height: 100%;
 				object-fit: contain;
 				filter: brightness(0) invert(1);
 			}
@@ -186,7 +194,7 @@
 				<nav>
 					<ul>
 						<li><a href="#rolunk">Rólunk</a></li>
-						<li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+						<li><a href="#szolgaltatasok">Árak</a></li>
 						<li><a href="#soforok">Sofőrök</a></li>
 						<li><a href="#kapcsolat">Kapcsolat</a></li>
 					</ul>
@@ -204,53 +212,93 @@
 					<p>Két azonos Škoda Octaviával dolgozunk, amelyek rendszeresen karbantartottak és mindig tiszták. Akár éjjel kettőkor van szüksége taxira, akár hajnali reptéri járathoz kell fuvar — számíthat ránk.</p>
 				</article>
 
-				<!-- Szolgáltatások & Árak -->
+				<!-- Árak -->
 				<article id="szolgaltatasok">
-					<h2 class="major">Szolgáltatások</h2>
-					<ul class="service-list">
-						<li><span class="icon">✈</span> <strong>Reptéri transzfer</strong> — Budapest, Bécs, Pozsony</li>
-						<li><span class="icon">🚖</span> <strong>Városi fuvar</strong> — Győrön belül, gyorsan</li>
-						<li><span class="icon">💼</span> <strong>Vállalati fuvarozás</strong> — rendszeres, megbízható</li>
-						<li><span class="icon">🛣️</span> <strong>Távolsági út</strong> — egész Magyarország</li>
-					</ul>
-					<h3 style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:0.95rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.5rem;">Tájékoztató árak</h3>
+					<h2 class="major">Árak</h2>
+
+					<!-- Rate card -->
+					<div style="overflow-x:auto;margin-bottom:1.5rem;">
+						<table class="price-table" style="min-width:28rem;">
+							<thead>
+								<tr>
+									<th>Megnevezés</th>
+									<th>Normál</th>
+									<th>Törzsutas</th>
+									<th>Ünnepnap</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="label">Alapdíj</td>
+									<td>1 500 Ft</td>
+									<td>1 500 Ft</td>
+									<td>1 500 Ft</td>
+								</tr>
+								<tr>
+									<td class="label">KM díj</td>
+									<td>900 Ft/km</td>
+									<td>800 Ft/km</td>
+									<td>1 100 Ft/km</td>
+								</tr>
+								<tr>
+									<td class="label">Várakozás</td>
+									<td>200 Ft/perc</td>
+									<td>150 Ft/perc</td>
+									<td>200 Ft/perc</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<!-- Examples -->
+					<p style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.5rem;">Tájékoztató példák</p>
 					<table class="price-table">
 						<thead>
 							<tr>
 								<th>Útvonal</th>
-								<th>Távolság</th>
-								<th>Ár</th>
+								<th>~km</th>
+								<th>Becsült ár</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td class="label">Győr belváros</td>
-								<td>~5 km</td>
-								<td class="price">1 200 Ft</td>
+								<td class="label">🏠 Győr belváros</td>
+								<td>~5</td>
+								<td class="price">~5 000 Ft</td>
 							</tr>
 							<tr>
-								<td class="label">Győr → Budapest</td>
-								<td>~120 km</td>
-								<td class="price">18 000 Ft</td>
+								<td class="label">🏘️ Abda / Győrszentiván</td>
+								<td>~10</td>
+								<td class="price">~10 000 Ft</td>
 							</tr>
 							<tr>
-								<td class="label">Győr → Ferihegy</td>
-								<td>~130 km</td>
-								<td class="price">20 000 Ft</td>
+								<td class="label">🏭 Mosonmagyaróvár</td>
+								<td>~35</td>
+								<td class="price">~25 000 Ft</td>
 							</tr>
 							<tr>
-								<td class="label">Győr → Bécs</td>
-								<td>~115 km</td>
-								<td class="price">22 000 Ft</td>
+								<td class="label">🌆 Komárom / Pápa</td>
+								<td>~45</td>
+								<td class="price">~30 000 Ft</td>
 							</tr>
 							<tr>
-								<td class="label">Győr → Pozsony</td>
-								<td>~80 km</td>
-								<td class="price">16 000 Ft</td>
+								<td class="label">🛣️ Budapest</td>
+								<td>~120</td>
+								<td class="price">~70 000 Ft</td>
+							</tr>
+							<tr>
+								<td class="label">✈️ Ferihegy</td>
+								<td>~130</td>
+								<td class="price">~70 000 Ft</td>
+							</tr>
+							<tr>
+								<td class="label">🇦🇹 Bécs (Schwechat)</td>
+								<td>~160</td>
+								<td class="price">~90 000 Ft</td>
 							</tr>
 						</tbody>
 					</table>
-					<p style="margin-top:1rem;font-size:0.8rem;opacity:0.6;">Az árak tájékoztató jellegűek. Pontos árajánlatért hívjon minket!</p>
+					<p style="font-size:0.75rem;opacity:0.55;margin-top:0.4rem;">Normál tarifa alapján, tájékoztató jelleggel. Pontos ajánlatért hívjon!</p>
 				</article>
 
 				<!-- Sofőrök -->
@@ -280,28 +328,14 @@
 				<!-- Kapcsolat -->
 				<article id="kapcsolat">
 					<h2 class="major">Kapcsolat</h2>
-					<form method="post" action="#">
-						<div class="fields">
-							<div class="field half">
-								<label for="name">Név</label>
-								<input type="text" name="name" id="name" placeholder="Az Ön neve" />
-							</div>
-							<div class="field half">
-								<label for="email">E-mail</label>
-								<input type="text" name="email" id="email" placeholder="email@pelda.hu" />
-							</div>
-							<div class="field">
-								<label for="message">Üzenet</label>
-								<textarea name="message" id="message" rows="4" placeholder="Honnan, hova, mikor?"></textarea>
-							</div>
-						</div>
-						<ul class="actions">
-							<li><input type="submit" value="Üzenet küldése" class="primary" /></li>
-							<li><input type="reset" value="Törlés" /></li>
-						</ul>
-					</form>
+					<p>Hívjon minket közvetlenül — éjjel-nappal elérhetők vagyunk.</p>
+					<p style="font-size:2rem;font-family:'Exo 2',sans-serif;font-weight:900;letter-spacing:0.02em;margin:1.5rem 0 0.5rem;">
+						+36 30 123 4567
+					</p>
+					<ul class="actions" style="margin-bottom:2rem;">
+						<li><a href="tel:+36301234567" class="button primary">📞 Hívjon most!</a></li>
+					</ul>
 					<ul class="icons">
-						<li><a href="tel:+36301234567" class="icon solid fa-phone"><span class="label">Telefon</span></a></li>
 						<li><a href="mailto:info@rapidtaxigyor.hu" class="icon solid fa-envelope"><span class="label">E-mail</span></a></li>
 						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 					</ul>
