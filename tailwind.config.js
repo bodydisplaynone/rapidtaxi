@@ -4,13 +4,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        taxi: {
-          yellow: '#F5C518',
-          dark:   '#111827',
+        brand: {
+          navy:   '#2D3E6B',
+          yellow: '#F5B800',
+          light:  '#F8F8F6',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        heading: ['Exo 2', 'ui-sans-serif', 'system-ui'],
+        body:    ['Inter', 'ui-sans-serif', 'system-ui'],
       },
     },
   },
