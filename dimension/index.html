@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP — reskinned for RapidTaxi Győr
+-->
+<html lang="hu">
+	<head>
+		<title>RapidTaxi Győr – Gyors, megbízható taxiszolgáltatás</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* ── Brand overrides ── */
+			:root {
+				--navy:  #2D3E6B;
+				--yellow: #F5B800;
+			}
+
+			body { font-family: 'Exo 2', sans-serif; }
+
+			/* Background: skoda photo instead of default bg.jpg */
+			#bg:after {
+				background-image: url("../assets/skoda.jpg");
+			}
+			/* Darken overlay slightly more for readability */
+			#bg:before {
+				background-image: linear-gradient(to top, rgba(20, 28, 50, 0.65), rgba(20, 28, 50, 0.65)), url("images/overlay.png");
+			}
+
+			/* Header logo: replace icon with car illustration */
+			#header .logo {
+				border-color: var(--yellow);
+			}
+			#header .logo img {
+				width: 4rem;
+				height: 4rem;
+				object-fit: contain;
+				filter: brightness(0) invert(1);
+			}
+
+			/* Headings */
+			#header .content .inner h1 {
+				font-family: 'Exo 2', sans-serif;
+				font-style: italic;
+				font-weight: 900;
+				letter-spacing: 0.02em;
+			}
+			#header .content .inner h1 span.yellow { color: var(--yellow); }
+
+			/* Nav links */
+			#header nav ul li a {
+				font-family: 'Exo 2', sans-serif;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+			}
+			#header nav ul li a:hover,
+			#header nav ul li a:active { color: var(--yellow); border-color: var(--yellow); }
+
+			/* Article headings */
+			#main article h2.major {
+				font-family: 'Exo 2', sans-serif;
+				font-weight: 900;
+				font-style: italic;
+			}
+			#main article h2.major:after { background: var(--yellow); }
+
+			/* Primary button → brand yellow */
+			input[type="submit"].primary,
+			input[type="reset"].primary,
+			input[type="button"].primary,
+			button.primary,
+			.button.primary {
+				background-color: var(--yellow) !important;
+				color: #1b1f22 !important;
+				font-family: 'Exo 2', sans-serif;
+				font-weight: 800;
+			}
+
+			/* ── Driver cards ── */
+			.driver-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1.5rem;
+				margin-top: 1.5rem;
+			}
+			@media (max-width: 480px) { .driver-grid { grid-template-columns: 1fr; } }
+			.driver-card {
+				background: rgba(255,255,255,0.07);
+				border: 1px solid rgba(255,255,255,0.15);
+				border-radius: 0.5rem;
+				overflow: hidden;
+				text-align: center;
+			}
+			.driver-card img {
+				width: 100%;
+				height: 11rem;
+				object-fit: cover;
+				object-position: top;
+				display: block;
+			}
+			.driver-card .driver-info { padding: 1rem; }
+			.driver-card .driver-name {
+				font-family: 'Exo 2', sans-serif;
+				font-weight: 800;
+				font-size: 1.15rem;
+				margin: 0 0 0.25rem;
+			}
+			.driver-card .driver-role {
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.15em;
+				text-transform: uppercase;
+				color: var(--yellow);
+				margin-bottom: 0.6rem;
+			}
+			.driver-card p { font-size: 0.85rem; line-height: 1.6; opacity: 0.8; margin: 0; }
+
+			/* ── Pricing table ── */
+			.price-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 1rem;
+				font-size: 0.88rem;
+			}
+			.price-table th {
+				text-align: left;
+				font-family: 'Exo 2', sans-serif;
+				font-weight: 700;
+				font-size: 0.7rem;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: var(--yellow);
+				border-bottom: 1px solid rgba(255,255,255,0.15);
+				padding: 0.5rem 0.75rem;
+			}
+			.price-table td {
+				padding: 0.6rem 0.75rem;
+				border-bottom: 1px solid rgba(255,255,255,0.07);
+				vertical-align: middle;
+			}
+			.price-table tr:last-child td { border-bottom: none; }
+			.price-table .label { font-weight: 700; }
+			.price-table .price { color: var(--yellow); font-weight: 800; white-space: nowrap; }
+
+			/* ── Services list ── */
+			.service-list {
+				list-style: none;
+				padding: 0;
+				margin: 1rem 0 1.5rem;
+			}
+			.service-list li {
+				padding: 0.55rem 0;
+				border-bottom: 1px solid rgba(255,255,255,0.08);
+				display: flex;
+				align-items: center;
+				gap: 0.6rem;
+				font-size: 0.9rem;
+			}
+			.service-list li:last-child { border-bottom: none; }
+			.service-list .icon { color: var(--yellow); font-size: 1rem; }
+
+			/* Footer */
+			#footer { font-family: 'Exo 2', sans-serif; }
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Header -->
+			<header id="header">
+				<div class="logo">
+					<img src="../assets/g2.png" alt="RapidTaxi logó" />
+				</div>
+				<div class="content">
+					<div class="inner">
+						<h1><span class="yellow">Rapid</span>Taxi Győr</h1>
+						<p>Gyors, megbízható taxiszolgáltatás Győrből.<br />
+						Városi fuvartól reptéri transzferig — éjjel-nappal.</p>
+					</div>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="#rolunk">Rólunk</a></li>
+						<li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+						<li><a href="#soforok">Sofőrök</a></li>
+						<li><a href="#kapcsolat">Kapcsolat</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<!-- Main -->
+			<div id="main">
+
+				<!-- Rólunk -->
+				<article id="rolunk">
+					<h2 class="major">Rólunk</h2>
+					<span class="image main"><img src="../assets/skoda.jpg" alt="Škoda Octavia – RapidTaxi" /></span>
+					<p>A RapidTaxi Győr egy családi vállalkozás — apa és fia közösen viszik az utasokat Győrből bárhova. Fontos számunkra a pontosság, a tiszta autó és a barátságos kiszolgálás.</p>
+					<p>Két azonos Škoda Octaviával dolgozunk, amelyek rendszeresen karbantartottak és mindig tiszták. Akár éjjel kettőkor van szüksége taxira, akár hajnali reptéri járathoz kell fuvar — számíthat ránk.</p>
+				</article>
+
+				<!-- Szolgáltatások & Árak -->
+				<article id="szolgaltatasok">
+					<h2 class="major">Szolgáltatások</h2>
+					<ul class="service-list">
+						<li><span class="icon">✈</span> <strong>Reptéri transzfer</strong> — Budapest, Bécs, Pozsony</li>
+						<li><span class="icon">🚖</span> <strong>Városi fuvar</strong> — Győrön belül, gyorsan</li>
+						<li><span class="icon">💼</span> <strong>Vállalati fuvarozás</strong> — rendszeres, megbízható</li>
+						<li><span class="icon">🛣️</span> <strong>Távolsági út</strong> — egész Magyarország</li>
+					</ul>
+					<h3 style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:0.95rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.5rem;">Tájékoztató árak</h3>
+					<table class="price-table">
+						<thead>
+							<tr>
+								<th>Útvonal</th>
+								<th>Távolság</th>
+								<th>Ár</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="label">Győr belváros</td>
+								<td>~5 km</td>
+								<td class="price">1 200 Ft</td>
+							</tr>
+							<tr>
+								<td class="label">Győr → Budapest</td>
+								<td>~120 km</td>
+								<td class="price">18 000 Ft</td>
+							</tr>
+							<tr>
+								<td class="label">Győr → Ferihegy</td>
+								<td>~130 km</td>
+								<td class="price">20 000 Ft</td>
+							</tr>
+							<tr>
+								<td class="label">Győr → Bécs</td>
+								<td>~115 km</td>
+								<td class="price">22 000 Ft</td>
+							</tr>
+							<tr>
+								<td class="label">Győr → Pozsony</td>
+								<td>~80 km</td>
+								<td class="price">16 000 Ft</td>
+							</tr>
+						</tbody>
+					</table>
+					<p style="margin-top:1rem;font-size:0.8rem;opacity:0.6;">Az árak tájékoztató jellegűek. Pontos árajánlatért hívjon minket!</p>
+				</article>
+
+				<!-- Sofőrök -->
+				<article id="soforok">
+					<h2 class="major">Sofőrök</h2>
+					<p>Két tapasztalt sofőr, egy közös cél: biztonságosan és időben az úti célba.</p>
+					<div class="driver-grid">
+						<div class="driver-card">
+							<img src="../assets/bence-driver.jpg" alt="Bence" />
+							<div class="driver-info">
+								<p class="driver-name">Bence</p>
+								<p class="driver-role">Sofőr</p>
+								<p>A fiatal energia. Győr és környékén minden utcát ismer, éjszakai fuvarokra is elérhető.</p>
+							</div>
+						</div>
+						<div class="driver-card">
+							<img src="../assets/jozsi-driver.jpg" alt="Józsi" />
+							<div class="driver-info">
+								<p class="driver-name">Józsi</p>
+								<p class="driver-role">Sofőr</p>
+								<p>A tapasztalat. Több mint 15 éve vezet hivatásszerűen, reptéri transzfer specialista.</p>
+							</div>
+						</div>
+					</div>
+				</article>
+
+				<!-- Kapcsolat -->
+				<article id="kapcsolat">
+					<h2 class="major">Kapcsolat</h2>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field half">
+								<label for="name">Név</label>
+								<input type="text" name="name" id="name" placeholder="Az Ön neve" />
+							</div>
+							<div class="field half">
+								<label for="email">E-mail</label>
+								<input type="text" name="email" id="email" placeholder="email@pelda.hu" />
+							</div>
+							<div class="field">
+								<label for="message">Üzenet</label>
+								<textarea name="message" id="message" rows="4" placeholder="Honnan, hova, mikor?"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Üzenet küldése" class="primary" /></li>
+							<li><input type="reset" value="Törlés" /></li>
+						</ul>
+					</form>
+					<ul class="icons">
+						<li><a href="tel:+36301234567" class="icon solid fa-phone"><span class="label">Telefon</span></a></li>
+						<li><a href="mailto:info@rapidtaxigyor.hu" class="icon solid fa-envelope"><span class="label">E-mail</span></a></li>
+						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+					</ul>
+				</article>
+
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<p class="copyright">&copy; 2026 RapidTaxi Győr. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
+
+		</div>
+
+		<!-- BG -->
+		<div id="bg"></div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
