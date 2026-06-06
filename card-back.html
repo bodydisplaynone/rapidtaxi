@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RapidTaxi — Business Card Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #d1d5db;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 48px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 40px;
+    }
+
+    .label {
+      font-size: 11px;
+      color: #6b7280;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: -36px;
+    }
+
+    /* 90x50mm at 96dpi ≈ 340x189px */
+    .card {
+      width: 340px;
+      height: 189px;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── FRONT ── */
+    .front {
+      background: #2D3E6B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .front img {
+      width: 78%;
+      object-fit: contain;
+    }
+
+    /* ── BACK ── */
+    .back {
+      background: #F8F8F6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 18px 24px;
+    }
+
+    /* watermark */
+    .back .watermark {
+      position: absolute;
+      right: -15px;
+      bottom: 5px;
+      width: 190px;
+      opacity: 0.06;
+      pointer-events: none;
+      transform: scaleX(-1);
+    }
+
+    .back .wordmark {
+      font-size: 11px;
+      font-weight: 800;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .back .wordmark .r { color: #2D3E6B; }
+    .back .wordmark .t { color: #F5B800; }
+
+    .back hr {
+      border: none;
+      border-top: 1px solid #2D3E6B;
+      opacity: 0.2;
+      margin-bottom: 10px;
+    }
+
+    .back .name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #2D3E6B;
+      margin-bottom: 1px;
+    }
+
+    .back .title {
+      font-size: 8px;
+      font-weight: 700;
+      color: #F5B800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .back .contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .back .row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 9px;
+      color: #2D3E6B;
+      font-weight: 500;
+    }
+
+    .back .row.phone {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #F5B800;
+    }
+
+    .back .row .icon {
+      width: 13px;
+      text-align: center;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    .back .footer {
+      position: absolute;
+      bottom: 8px;
+      left: 24px;
+      font-size: 7.5px;
+      color: #9ca3af;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* bottom accent bar */
+    .back .accent-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #2D3E6B 60%, #F5B800 100%);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="label">Front</div>
+  <div class="card front">
+    <img src="assets/g2b.png" alt="RapidTaxi" />
+  </div>
+
+  <div class="label">Back</div>
+  <div class="card back">
+
+    <!-- Watermark car bottom right -->
+    <img src="assets/g2b.png" class="watermark" alt="" />
+
+    <!-- Wordmark -->
+    <div class="wordmark">
+      <span class="r">Rapid</span><span class="t">Taxi</span>
+    </div>
+
+    <hr />
+
+    <div class="name">Kovács László</div>
+    <div class="title">Sofőr &amp; Alapító</div>
+
+    <div class="contacts">
+      <div class="row phone">
+        <span class="icon">📞</span>
+        +36 30 123 4567
+      </div>
+      <div class="row">
+        <span class="icon">✉</span>
+        info@rapidtaxi.hu
+      </div>
+      <div class="row">
+        <span class="icon">🌐</span>
+        rapidtaxi.hu
+      </div>
+      <div class="row">
+        <span class="icon">📍</span>
+        Győr, Magyarország
+      </div>
+    </div>
+
+    <div class="footer">Éjjel-nappal · 0–24</div>
+    <div class="accent-bar"></div>
+  </div>
+
+</body>
+</html>

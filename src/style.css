@@ -3,52 +3,80 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
+  body { @apply font-body bg-brand-light text-brand-navy antialiased; }
+  h1, h2, h3, h4 { @apply font-heading; }
 }
 
 @layer components {
+
+  /* ── Nav ── */
   .nav-link {
-    @apply text-gray-300 hover:text-taxi-yellow transition-colors duration-200 font-medium;
+    @apply text-gray-300 hover:text-brand-yellow transition-colors duration-200 font-medium text-sm;
   }
 
+  /* ── Buttons ── */
   .btn-primary {
-    @apply bg-taxi-yellow text-taxi-dark font-bold px-8 py-3 rounded-full
-           hover:bg-yellow-400 active:scale-95 transition-all duration-200 inline-block;
+    @apply bg-brand-yellow text-brand-navy font-bold font-heading px-8 py-3 rounded-full
+           hover:brightness-110 active:scale-95 transition-all duration-200 inline-block;
+  }
+  .btn-outline {
+    @apply border-2 border-white/40 text-white font-semibold px-8 py-3 rounded-full
+           hover:border-brand-yellow hover:text-brand-yellow transition-all duration-200 inline-block;
   }
 
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold text-taxi-dark mb-4;
+  /* ── Section labels ── */
+  .section-label {
+    @apply text-brand-yellow font-heading font-semibold uppercase tracking-widest text-xs mb-3;
+  }
+  .section-title-dark {
+    @apply text-3xl md:text-4xl font-heading font-black text-white mb-4;
+  }
+  .section-title-light {
+    @apply text-3xl md:text-4xl font-heading font-black text-brand-navy mb-4;
+  }
+  .section-sub-dark  { @apply text-gray-400 text-base mb-12 max-w-xl mx-auto; }
+  .section-sub-light { @apply text-gray-500 text-base mb-12 max-w-xl mx-auto; }
+
+  /* ── Cards ── */
+  .card-light {
+    @apply bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow duration-300;
+  }
+  .card-dark {
+    @apply bg-white/5 border border-white/10 rounded-2xl p-6
+           hover:bg-white/10 transition-colors duration-300;
   }
 
-  .section-subtitle {
-    @apply text-gray-500 text-lg mb-12 max-w-xl mx-auto;
-  }
-
-  .card {
-    @apply bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300;
-  }
-
-  /* Gallery hover overlay */
+  /* ── Gallery ── */
   .gallery-item {
     @apply relative overflow-hidden rounded-2xl cursor-pointer;
   }
-
   .gallery-item img {
-    @apply w-full h-56 object-cover transition-transform duration-500;
+    @apply w-full h-60 object-cover transition-transform duration-500;
   }
-
-  .gallery-item:hover img {
-    @apply scale-110;
-  }
-
+  .gallery-item:hover img { @apply scale-105; }
   .gallery-overlay {
-    @apply absolute inset-0 bg-taxi-dark/40 opacity-0 transition-opacity duration-300
-           flex items-center justify-center;
+    @apply absolute inset-0 bg-brand-navy/50 opacity-0 flex items-center justify-center
+           transition-opacity duration-300;
+  }
+  .gallery-item:hover .gallery-overlay { @apply opacity-100; }
+
+  /* ── Mobile touch targets ── */
+  @media (max-width: 768px) {
+    .card-dark, .card-light { @apply p-5; }
+    .section-title-dark, .section-title-light { @apply text-2xl; }
   }
 
-  .gallery-item:hover .gallery-overlay {
-    @apply opacity-100;
+  /* ── Pricing table ── */
+  .price-table th {
+    @apply py-3 px-4 text-left text-xs font-heading font-bold uppercase tracking-wider
+           text-brand-yellow border-b border-white/10;
+  }
+  .price-table td {
+    @apply py-3 px-4 text-sm text-gray-200 border-b border-white/5;
+  }
+  .price-table tr:last-child td { @apply border-b-0; }
+  .price-table .row-label {
+    @apply font-heading font-bold text-white;
   }
 }
