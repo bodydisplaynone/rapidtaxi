@@ -11,7 +11,7 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['Exo 2', 'ui-sans-serif', 'system-ui'],
+        heading: ['"Exo 2"', 'ui-sans-serif', 'system-ui'],
         body:    ['Inter', 'ui-sans-serif', 'system-ui'],
       },
     },
