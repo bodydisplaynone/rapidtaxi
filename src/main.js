@@ -1,4 +1,5 @@
 import './style.css'
+import './cookie-consent.js'
 
 // ── Hamburger menu toggle ──
 const burger = document.getElementById('burger')

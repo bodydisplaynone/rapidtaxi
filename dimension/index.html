@@ -23,7 +23,7 @@
 
 			/* Background: skoda photo instead of default bg.jpg */
 			#bg:after {
-				background-image: url("../assets/skoda.jpg");
+				background-image: url("../assets/header.jpg");
 			}
 			/* Darken overlay slightly more for readability */
 			#bg:before {
@@ -187,8 +187,8 @@
 				<div class="content">
 					<div class="inner">
 						<h1><span class="yellow">Rapid</span>Taxi Győr</h1>
-						<p>Gyors, megbízható taxiszolgáltatás Győrből.<br />
-						Városi fuvartól reptéri transzferig — éjjel-nappal.</p>
+						<p>Helyi taxi Győrben — főként pénteken és szombaton éjjel.<br />
+						Egyedi fuvarok telefonos egyeztetés alapján.</p>
 					</div>
 				</div>
 				<nav>
@@ -207,9 +207,10 @@
 				<!-- Rólunk -->
 				<article id="rolunk">
 					<h2 class="major">Rólunk</h2>
-					<span class="image main"><img src="../assets/skoda.jpg" alt="Škoda Octavia – RapidTaxi" /></span>
-					<p>A RapidTaxi Győr egy családi vállalkozás — apa és fia közösen viszik az utasokat Győrből bárhova. Fontos számunkra a pontosság, a tiszta autó és a barátságos kiszolgálás.</p>
-					<p>Két azonos Škoda Octaviával dolgozunk, amelyek rendszeresen karbantartottak és mindig tiszták. Akár éjjel kettőkor van szüksége taxira, akár hajnali reptéri járathoz kell fuvar — számíthat ránk.</p>
+					<span class="image main"><img src="../assets/skooda.jpg" alt="Škoda Octavia – RapidTaxi" /></span>
+					<p>A RapidTaxi Győr egy családi buli — apa és fia visz haza. Fontos nekünk a pontosság, a tiszta autó és hogy jól érezd magad az úton.</p>
+					<p>Főként pénteken és szombaton éjjel vagyunk elérhetők — személyesen vagy telefonon. Rendezvény-készenlét és egyedi hosszabb utak egyeztetés alapján vállalhatók.</p>
+					<p>Két Škoda Octaviával dolgozunk, rendszeresen karbantartva.</p>
 				</article>
 
 				<!-- Árak -->
@@ -298,7 +299,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<p style="font-size:0.75rem;opacity:0.55;margin-top:0.4rem;">Normál tarifa alapján, tájékoztató jelleggel. Pontos ajánlatért hívjon!</p>
+					<p style="font-size:0.75rem;opacity:0.55;margin-top:0.4rem;">Normál tarifa alapján, tájékoztató jelleggel. Pontos ajánlatért hívj minket!</p>
 				</article>
 
 				<!-- Sofőrök -->
@@ -328,12 +329,12 @@
 				<!-- Kapcsolat -->
 				<article id="kapcsolat">
 					<h2 class="major">Kapcsolat</h2>
-					<p>Hívjon minket közvetlenül — éjjel-nappal elérhetők vagyunk.</p>
+					<p>Hívj minket közvetlenül — hétvégén biztosan felvesszük!</p>
 					<p style="font-size:2rem;font-family:'Exo 2',sans-serif;font-weight:900;letter-spacing:0.02em;margin:1.5rem 0 0.5rem;">
 						+36 30 123 4567
 					</p>
 					<ul class="actions" style="margin-bottom:2rem;">
-						<li><a href="tel:+36301234567" class="button primary">📞 Hívjon most!</a></li>
+						<li><a href="tel:+36301234567" class="button primary">📞 Hívj most!</a></li>
 					</ul>
 					<ul class="icons">
 						<li><a href="mailto:info@rapidtaxigyor.hu" class="icon solid fa-envelope"><span class="label">E-mail</span></a></li>
@@ -359,6 +360,70 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+
+		<!-- ── Cookie consent banner ── -->
+		<div id="cookie-banner"
+			style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1f2e;border-top:2px solid #F5B800;padding:1rem 1.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+			<p style="margin:0;font-size:0.85rem;color:#ccc;max-width:600px;">
+				Ez az oldal Google Ads hirdetési sütiket használ. A „Elfogadom" gombra kattintva hozzájárulsz a sütik elhelyezéséhez.
+				<a href="../privacy.html" style="color:#F5B800;text-decoration:underline;">Adatvédelmi tájékoztató</a>
+			</p>
+			<div style="display:flex;gap:0.75rem;flex-shrink:0;">
+				<button id="cookie-reject"
+					style="background:transparent;border:1px solid rgba(255,255,255,0.3);color:#ccc;padding:0.5rem 1.25rem;border-radius:99px;cursor:pointer;font-size:0.85rem;">
+					Elutasítom
+				</button>
+				<button id="cookie-accept"
+					style="background:#F5B800;border:none;color:#1a1a2e;font-weight:800;padding:0.5rem 1.25rem;border-radius:99px;cursor:pointer;font-size:0.85rem;">
+					Elfogadom
+				</button>
+			</div>
+		</div>
+
+		<!-- Google Consent Mode v2 — denied by default until user accepts -->
+		<script>
+			var CONSENT_KEY = 'rapidtaxi_consent';
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){ dataLayer.push(arguments); }
+			gtag('consent', 'default', {
+				ad_storage: 'denied', ad_user_data: 'denied',
+				ad_personalization: 'denied', analytics_storage: 'denied',
+				wait_for_update: 500
+			});
+
+			(function(){
+				var saved = localStorage.getItem(CONSENT_KEY);
+				var banner = document.getElementById('cookie-banner');
+				if (saved === 'accepted') {
+					gtag('consent', 'update', { ad_storage:'granted', ad_user_data:'granted', ad_personalization:'granted', analytics_storage:'granted' });
+				} else if (!saved && banner) {
+					banner.style.display = 'flex';
+				}
+				document.getElementById('cookie-accept') && document.getElementById('cookie-accept').addEventListener('click', function(){
+					localStorage.setItem(CONSENT_KEY, 'accepted');
+					gtag('consent', 'update', { ad_storage:'granted', ad_user_data:'granted', ad_personalization:'granted', analytics_storage:'granted' });
+					banner.style.opacity = '0';
+					setTimeout(function(){ banner.remove(); }, 300);
+				});
+				document.getElementById('cookie-reject') && document.getElementById('cookie-reject').addEventListener('click', function(){
+					localStorage.setItem(CONSENT_KEY, 'rejected');
+					banner.style.opacity = '0';
+					setTimeout(function(){ banner.remove(); }, 300);
+				});
+			})();
+		</script>
+
+		<!-- Footer privacy link -->
+		<style>
+			#footer .privacy-link { font-size: 0.75rem; margin-top: 0.5rem; display: block; }
+			#footer .privacy-link a { color: rgba(255,255,255,0.4); text-decoration: underline; margin: 0 0.5rem; }
+			#footer .privacy-link a:hover { color: #F5B800; }
+		</style>
+		<script>
+			document.querySelector('#footer').insertAdjacentHTML('beforeend',
+				'<span class="privacy-link"><a href="../privacy.html">Adatvédelmi tájékoztató</a> · <a href="#" onclick="localStorage.removeItem(\'rapidtaxi_consent\');location.reload();return false;">Süti beállítások</a></span>'
+			);
+		</script>
 
 	</body>
 </html>
