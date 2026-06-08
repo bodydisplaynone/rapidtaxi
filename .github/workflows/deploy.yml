@@ -32,10 +32,6 @@ jobs:
 
       - run: npm run build
 
-      # Copy the static Dimension template into dist so both versions are live
-      - name: Copy Dimension template into dist
-        run: cp -r dimension dist/dimension
-
       - uses: actions/configure-pages@v4
 
       - uses: actions/upload-pages-artifact@v3
